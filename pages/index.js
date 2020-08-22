@@ -1,13 +1,23 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Layout from '../components/Layout';
+import { withApollo } from '../lib/apollo';
+import { withQuery, useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
-export default function Home() {
+const HELLO_QUERY = gql`
+  query HelloThere {
+    helloWorld
+  }
+`;
+function Home() {
+  const { data, error, loading } = useQuery(HELLO_QUERY);
+  if (loading) return <div />;
   return (
     <Layout className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <a href="https://nextjs.org">{data.helloWorld}!</a>
         </h1>
 
         <p className={styles.description}>
@@ -59,3 +69,4 @@ export default function Home() {
     </Layout>
   );
 }
+export default withApollo(Home);
