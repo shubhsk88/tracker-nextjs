@@ -1,7 +1,15 @@
+import Habit from './habits';
+
 export const habitsMutation = {
   Mutation: {
     addHabit: async (_, { habit }) => {
-      console.log('its working');
+      try {
+        const newHabit = await Habit.create({ ...habit });
+        return newHabit;
+      } catch (error) {
+        console.error(error);
+        return [];
+      }
     },
   },
 };

@@ -21,7 +21,7 @@ function Home() {
     <Layout className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">{data.helloWorld}!</a>
+          Welcome to <a href="https://nextjs.org">!</a>
         </h1>
         <div className={styles.list}>
           <HabitForm setHabits={setHabits} />
