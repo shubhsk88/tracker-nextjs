@@ -1,4 +1,31 @@
 import { useState } from 'react';
+import { useMutation, gql } from '@apollo/client';
+
+const ADD_EVENT = gql`
+  mutation AddEvent($habitId: ID, $date: Date) {
+    addEvent(habitId: $habitId, date: $date) {
+      _id
+      title
+      events {
+        _id
+        date
+      }
+    }
+  }
+`;
+
+const REMOVE_EVENT = gql`
+  mutation RemoveEvent($habitId: ID, $eventId: ID) {
+    removeEvent(habitId: $habitId, eventId: $eventId) {
+      _id
+      title
+      events {
+        _id
+        date
+      }
+    }
+  }
+`;
 
 const HabitButton = ({ date }) => {
   const [selector, setSelector] = useState(false);

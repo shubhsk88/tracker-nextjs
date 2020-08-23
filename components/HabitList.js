@@ -12,8 +12,7 @@ const HABIT_QUERY = gql`
 const HabitList = ({}) => {
   const { data, error, loading } = useQuery(HABIT_QUERY);
   if (loading) return <div>Loading...</div>;
-  if (error)
-    return <div>Error connecting to servers with response {error}</div>;
+  if (error) return <div>Error connecting to servers with response </div>;
   return (
     <section>
       <h2>My Habits</h2>

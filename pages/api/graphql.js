@@ -19,6 +19,7 @@ const fakeResolvers = {
 
 const resolvers = mergeResolvers([fakeResolvers, habitQuery, habitsMutation]);
 const typeDefs = mergeTypeDefs([Habit, fakeTypeDefs]);
+
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
 export const config = {

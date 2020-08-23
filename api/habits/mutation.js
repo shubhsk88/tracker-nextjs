@@ -11,5 +11,13 @@ export const habitsMutation = {
         return [];
       }
     },
+
+    addEvent: async (_, { habitId, date }) => {
+      console.log('its there');
+    },
+
+    removeEvent: async (_, { habitId, eventId }) => {
+      console.log('same');
+    },
   },
 };
