@@ -6,6 +6,10 @@ const HABIT_QUERY = gql`
     habits {
       title
       _id
+      events {
+        _id
+        date
+      }
     }
   }
 `;
