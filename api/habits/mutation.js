@@ -13,7 +13,27 @@ export const habitsMutation = {
     },
 
     addEvent: async (_, { habitId, date }) => {
-      console.log('its there');
+      try {
+        date.setHours(0, 0, 0, 0);
+        const habit = await Habit.findOneAndUpdate(
+          {
+            _id: habitId,
+            'events.date': {
+              $ne: date,
+            },
+          },
+          {
+            $addToSet: {
+              events: {
+                date,
+              },
+            },
+          }
+        );
+        return habit;
+      } catch (e) {
+        console.log(e);
+      }
     },
 
     removeEvent: async (_, { habitId, eventId }) => {
