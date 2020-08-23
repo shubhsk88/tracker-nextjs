@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { ApolloServer, gql } from 'apollo-server-micro';
+// import '../../lib/mongoose'
 
 const typeDefs = gql`
   type Query {
