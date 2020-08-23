@@ -5,10 +5,21 @@ const HabitButton = ({ date }) => {
 
   return (
     <span>
-      {`${date.getMonth}/${date.getDate}`}
+      {`${date.getMonth() + 1}/${date.getDate()}`}
       <button onClick={() => setSelector(!selector)}>
         {selector ? 'X' : 'O'}
       </button>
+      <style jsx>
+        {`
+          span {
+            display: flex;
+            flex-direction: column;
+          }
+          span + span {
+            margin-left: 10px;
+          }
+        `}
+      </style>
     </span>
   );
 };
