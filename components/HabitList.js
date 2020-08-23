@@ -2,14 +2,14 @@ const { default: Habit } = require('./Habit');
 import { useQuery, gql } from '@apollo/client';
 
 const HABIT_QUERY = gql`
-  query Habits {
+  query getHabits {
     habits {
       title
       _id
     }
   }
 `;
-const HabitList = ({ habits }) => {
+const HabitList = ({}) => {
   const { data, error, loading } = useQuery(HABIT_QUERY);
   if (loading) return <div>Loading...</div>;
   if (error)
