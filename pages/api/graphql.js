@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { ApolloServer, gql } from 'apollo-server-micro';
-// import '../../lib/mongoose'
+import connectDB from '../../lib/mongoose';
 
 const typeDefs = gql`
   type Query {
@@ -15,7 +15,7 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
 export const config = {
   api: {
@@ -23,7 +23,9 @@ export const config = {
   },
 };
 
-export default server.createHandler({ path: '/api/graphql' });
+const server = apolloServer.createHandler({ path: '/api/graphql' });
+
+export default connectDB(server);
 // export default (req, res) => {
 //   res.status(200).json({ name: 'Shubha' });
 // };
